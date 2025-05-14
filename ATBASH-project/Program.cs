@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,18 +11,28 @@ namespace ATBASH_project
     {
         static void Main(string[] args)
         {
-            using System;
-            using System.Collections.Generic;
-            using System.Linq;
-            using System.Text;
-            using System.Threading.Tasks;
 
-namespace ConsoleApp8
-    {
-        internal class Program
-        {
-            static void Main(string[] args)
+            string level_of_danger(int point, string message)
             {
+                if ((0 < point) && (point < 6))
+                {
+                    message += " WARRING";
+                }
+                else if ((5 < point) && (point < 11))
+                {
+                    message += " DANGER";
+                }
+                else if ((10 < point) && (point < 16))
+                {
+                    message += " ULTRA ALERT!";
+                }
+
+                string result = message +" " + point.ToString();
+                Console.WriteLine(result);
+                return result;
+            }
+
+ 
                 string Decoding_Athbaz(string encryptedText)
                 {
 
@@ -46,11 +57,7 @@ namespace ConsoleApp8
                     }
                     return Decryption;
                 }
-                Console.WriteLine(Decoding_Athbaz("Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb."));
-
-            }
-        }
-    }
+        
 
 
 }

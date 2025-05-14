@@ -11,25 +11,27 @@ namespace ATBASH_project
     {
         static void Main(string[] args)
         {
-            (int, string) Suspicious_word_score(string messege)
+            string level_of_danger(int point, string message)
             {
-                HashSet<string> dangerous_words = new HashSet<string> {  "gun", "knife", "bomb", "nukhba", "fighter", "rocket", "secret", "poison", "explosive" };
-
-                string[] strings = messege.Split(' ');
-                int score = 0;
-                foreach (string word in strings)
+                if ((0 < point) && (point < 6))
                 {
-                    if (dangerous_words.Contains(word))
-                    {
-                        score++;
-                    }
+                    message += " WARRING";
                 }
-                return (score, messege);
+                else if ((5 < point) && (point < 11))
+                {
+                    message += " DANGER";
+                }
+                else if ((10 < point) && (point < 16))
+                {
+                    message += " ULTRA ALERT!";
+                }
 
+                string result = message +" " + point.ToString();
+                Console.WriteLine(result);
+                return result;
             }
 
-            string message = "I have a bomb and a gun";
-            Console.WriteLine(Suspicious_word_score(message));
+ 
         }
     }
 }

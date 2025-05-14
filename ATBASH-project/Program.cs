@@ -11,25 +11,55 @@ namespace ATBASH_project
     {
         static void Main(string[] args)
         {
-            (int, string) Suspicious_word_score(string messege)
+
+            string level_of_danger(int point, string message)
             {
-                HashSet<string> dangerous_words = new HashSet<string> {  "gun", "knife", "bomb", "nukhba", "fighter", "rocket", "secret", "poison", "explosive" };
-
-                string[] strings = messege.Split(' ');
-                int score = 0;
-                foreach (string word in strings)
+                if ((0 < point) && (point < 6))
                 {
-                    if (dangerous_words.Contains(word))
-                    {
-                        score++;
-                    }
+                    message += " WARRING";
                 }
-                return (score, messege);
+                else if ((5 < point) && (point < 11))
+                {
+                    message += " DANGER";
+                }
+                else if ((10 < point) && (point < 16))
+                {
+                    message += " ULTRA ALERT!";
+                }
 
+                string result = message +" " + point.ToString();
+                Console.WriteLine(result);
+                return result;
             }
 
-            string message = "I have a bomb and a gun";
-            Console.WriteLine(Suspicious_word_score(message));
-        }
+ 
+                string Decoding_Athbaz(string encryptedText)
+                {
+
+                    string Decryption = "";
+                    Dictionary<char, char> Letters = new Dictionary<char, char>
+ {
+{'A','Z'},{'B','Y'},{'C','X'},{'D','W'},{'E','V'},{'F','U'},{'G','T'},{'H','S'},{'I','R'},{'J','Q'},{'K','P'},{'L','O'},{'M','N'},{'N','M'},{'O','L'},{'P','K'},{'Q','J'},{'R','I'},{'S','H'},{'T','G'},{'U','F'},{'V','E'},{'W','D'},{'X','C'},{'Y','B'},{'Z','A'},
+{'a','z'},{'b','y'},{'c','x'},{'d','w'},{'e','v'},{'f','u'},{'g','t'},{'h','s'},{'i','r'},{'j','q'},{'k','p'},{'l','o'},{'m','n'},{'n','m'},{'o','l'},{'p','k'},{'q','j'},{'r','i'},{'s','h'},{'t','g'},{'u','f'},{'v','e'},{'w','d'},{'x','c'},{'y','b'},{'z','a'} };
+                    foreach (var kvp in encryptedText)
+                    {
+                        if (char.IsLetter(kvp))
+                        {
+                            Decryption += Letters[kvp].ToString();
+                        }
+                        else
+                        {
+                            Decryption += kvp;
+                        }
+
+
+
+                    }
+                    return Decryption;
+                }
+        
+
+
+}
     }
 }
